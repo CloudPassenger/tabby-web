@@ -62,7 +62,7 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-linux-$DOCKERIZE_ARCH-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-linux-$DOCKERIZE_ARCH-$DOCKERIZE_VERSION.tar.gz
 
-RUN apk add mariadb-connector-c gcc
+RUN apk add gcc
 
 COPY --from=build-backend /app /app
 COPY --from=build-backend /app-dist /app-dist
