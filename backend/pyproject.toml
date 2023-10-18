@@ -9,7 +9,7 @@ python = "^3.7"
 Django = "^3.2.12"
 django-rest-framework = "^0.1.0"
 djangorestframework-dataclasses = "^0.9"
-social-auth-app-django = "^4.0.0"
+social-auth-app-django = "^5.0.0"
 python-dotenv = "^0.17.1"
 websockets = "^10.4"
 gql = "^2.0.0"
@@ -24,6 +24,8 @@ django-cors-headers = "^3.7.0"
 cryptography = "^37.0.4"
 fsspec = "^2021.7.0"
 whitenoise = "^5.3.0"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+social-auth-core = "^4.3.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"

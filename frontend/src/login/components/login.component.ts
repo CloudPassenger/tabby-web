@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { LoginService, CommonService } from 'src/common'
 
-import { faGithub, faGitlab, faGoogle, faMicrosoft } from '@fortawesome/free-brands-svg-icons'
+import { faPassport } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'login',
@@ -13,10 +13,7 @@ export class LoginComponent {
   ready = false
 
   providers = [
-    { name: 'GitHub', icon: faGithub, cls: 'btn-primary', id: 'github' },
-    { name: 'GitLab', icon: faGitlab, cls: 'btn-warning', id: 'gitlab' },
-    { name: 'Google', icon: faGoogle, cls: 'btn-secondary', id: 'google-oauth2' },
-    { name: 'Microsoft', icon: faMicrosoft, cls: 'btn-light', id: 'microsoft-graph' },
+    { name: 'Open ID', icon: faPassport, cls: 'btn-primary', id: 'oidc' },
   ]
 
   constructor (
