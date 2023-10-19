@@ -64,6 +64,7 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 
 RUN apk add gcc
 
+COPY --from=frontend /app/build /frontend
 COPY --from=build-backend /app /app
 COPY --from=build-backend /app-dist /app-dist
 COPY --from=build-backend /venv /venv
