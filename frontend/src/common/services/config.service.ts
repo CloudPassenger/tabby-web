@@ -1,4 +1,4 @@
-import * as semverCompare from 'semver/functions/compare-loose'
+import semverCompare from 'semver/functions/compare-loose'
 import { AsyncSubject, Subject } from 'rxjs'
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'

@@ -1,4 +1,4 @@
-import * as semverCompare from 'semver/functions/compare-loose'
+import semverCompare from 'semver/functions/compare-loose'
 import { Subject } from 'rxjs'
 import { Version } from './api'
 
