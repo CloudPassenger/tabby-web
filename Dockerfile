@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM node:12-alpine AS frontend-build
+FROM node:18-alpine AS frontend-build
 WORKDIR /app
 COPY frontend/package.json frontend/yarn.lock ./
 RUN yarn install --frozen-lockfile --network-timeout 1000000
@@ -10,7 +10,7 @@ COPY frontend/theme theme
 RUN yarn run build
 RUN yarn run build:server
 
-FROM node:12-alpine AS frontend
+FROM node:18-alpine AS frontend
 WORKDIR /app
 COPY --from=frontend-build /app/build build
 COPY --from=frontend-build /app/build-server build-server
@@ -41,7 +41,7 @@ COPY backend/manage.py backend/gunicorn.conf.py ./
 COPY backend/tabby tabby
 COPY --from=frontend /app/build /frontend
 
-ARG BUNDLED_TABBY=1.0.187-nightly.1
+ARG BUNDLED_TABBY=1.0.197-nightly.1
 
 RUN FRONTEND_BUILD_DIR=/frontend /venv/*/bin/python ./manage.py collectstatic --noinput
 RUN APP_DIST_STORAGE=file:///app-dist /venv/*/bin/python ./manage.py add_version ${BUNDLED_TABBY}
@@ -51,7 +51,7 @@ RUN APP_DIST_STORAGE=file:///app-dist /venv/*/bin/python ./manage.py add_version
 FROM python:3.7-alpine AS backend
 
 ENV APP_DIST_STORAGE file:///app-dist
-ENV DOCKERIZE_VERSION v0.6.1
+ENV DOCKERIZE_VERSION v0.7.0
 ENV DOCKERIZE_ARCH amd64
 ARG TARGETPLATFORM
 RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; \
